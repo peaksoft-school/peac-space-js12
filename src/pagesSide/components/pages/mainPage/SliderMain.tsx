@@ -6,6 +6,7 @@ import scss from './Style.module.scss';
 const SliderMain = () => {
 	const { data, isLoading } = useGetSliderPhotoQuery();
 	const [currentSlide, setCurrentSlide] = useState(0);
+	
 	const [loaded, setLoaded] = useState(false);
 	const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
 		initial: 0,

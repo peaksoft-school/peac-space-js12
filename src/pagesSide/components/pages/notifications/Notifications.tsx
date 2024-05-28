@@ -6,6 +6,7 @@ import { Point, Smile } from '@/src/assets/icons';
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 import NotificationsSlider from './NotificationsSlider';
+
 const Notifications = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { data: datas } = useGetMainPageQuery();
@@ -78,10 +79,6 @@ const Notifications = () => {
 										<div className={scss.tool_tip}>
 											<div className={scss.open_modal}>
 												<div className={scss.slider}>
-													{/* <img
-														src="https://i.pinimg.com/736x/5c/66/81/5c6681240a66a3b61aeb579bf154e7e4.jpg"
-														alt=""
-													/> */}
 													<NotificationsSlider />
 												</div>
 												<div className={scss.aside_bar}>

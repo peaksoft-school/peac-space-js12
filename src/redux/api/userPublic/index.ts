@@ -1,4 +1,5 @@
 import { api as index } from '..';
+
 import { USERPUBLIC } from './types';
 const api = index.injectEndpoints({
 	endpoints: (build) => ({
@@ -34,12 +35,26 @@ const api = index.injectEndpoints({
 				method: 'GET'
 			}),
 			providesTags: ['post']
+		}),
+
+
+		getUserFoto:build.query<
+		USERPUBLIC.GetUserPhotoResponse,
+		USERPUBLIC.GetPublicVideoRequest
+		>({
+			query: () => ({
+				url: 'https://74830233b5714376.mokky.dev/userFoto',
+				method: 'GET'
+			}),
+			providesTags: ['post']
 		})
+
 	})
 });
 
 export const {
 	useGetUserPublicQuery,
 	usePostUserPublicMutation,
-	useGetPublicVideoQuery
+	useGetPublicVideoQuery,
+	useGetUserFotoQuery
 } = api;

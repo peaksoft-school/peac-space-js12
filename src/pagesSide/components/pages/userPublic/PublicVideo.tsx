@@ -18,6 +18,7 @@ const PublicVideo = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [postRequest] = usePostUserPublicMutation();
 
+	// !modal
 	const [isModal, setIsModal] = useState(false);
 
 	const openModal = () => {
@@ -27,6 +28,7 @@ const PublicVideo = () => {
 		setIsModal(false);
 	};
 
+	// !
 	const [showMessage, setShowMessage] = useState<any>({});
 	const ShowMessageAgain = (id: any) => {
 		setShowMessage((prevState: { [x: string]: string }) => ({
@@ -35,12 +37,14 @@ const PublicVideo = () => {
 		}));
 	};
 
+		// !
 	const handleButtonClick = () => {
 		if (fileInputRef.current) {
 			fileInputRef.current.click();
 		}
 	};
 
+		// !
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
 		if (file) {
@@ -55,6 +59,7 @@ const PublicVideo = () => {
 		}
 	};
 
+		// !
 	const handleAddPhoto = async () => {
 		try {
 			let newData;
@@ -84,6 +89,8 @@ const PublicVideo = () => {
 			console.error('Error adding photo:', error);
 		}
 	};
+
+	
 	return (
 		<div className={scss.content}>
 			{isLoading ? (

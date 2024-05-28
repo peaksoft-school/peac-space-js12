@@ -15,6 +15,7 @@ const ModalTs: React.FC<{
 				open={open}
 				onCancel={onCancel}
 				footer={null}
+				mask={true}
 				className={scss.modal}
 			>
 				{children}

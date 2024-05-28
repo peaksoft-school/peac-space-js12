@@ -13,7 +13,7 @@ import ModalTs from '@/src/ui/modal/Modal';
 import SliderFoto from './SliderFoto';
 
 const PublicFotos = () => {
-	const { data, isLoading } = useGetUserPublicQuery();
+	const { data: data = [], isLoading } = useGetUserPublicQuery();
 	const [postRequest] = usePostUserPublicMutation();
 	const [, setHidePhoto] = useState(false);
 	const [image, setImage] = useState<string>('');
@@ -28,6 +28,7 @@ const PublicFotos = () => {
 	const closeModal = () => {
 		setIsModal(false);
 	};
+
 	// !
 	const [showMessage, setShowMessage] = useState<any>({});
 	const ShowMessageAgain = (id: any) => {
@@ -37,12 +38,14 @@ const PublicFotos = () => {
 		}));
 	};
 
+	// !
 	const handleButtonClick = () => {
 		if (fileInputRef.current) {
 			fileInputRef.current.click();
 		}
 	};
 
+	// !
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
 		if (file) {
@@ -57,6 +60,7 @@ const PublicFotos = () => {
 		}
 	};
 
+	// !
 	const handleAddPhoto = async () => {
 		try {
 			let newData;
@@ -86,6 +90,7 @@ const PublicFotos = () => {
 			console.error('Error adding photo:', error);
 		}
 	};
+
 	return (
 		<div className={scss.content}>
 			{isLoading ? (
@@ -100,38 +105,49 @@ const PublicFotos = () => {
 							</p>
 						</div>
 					</div>
-					{data?.map((item) => (
-						<div className={scss.section} key={item.id}>
-							<img
-								onClick={openModal}
-								src={item.img}
-								alt=""
-								className={scss.image}
-							/>
-							<button onClick={() => ShowMessageAgain(item.id)}>
-								<IconDots />
-							</button>
-							<div
-								className={
-									showMessage[item.id] ? scss.showMessage : scss.isNotMessage
-								}
-								onClick={() => ShowMessageAgain(item.id)}
-							>
-								<h4>заблокировать пользователя</h4>
-								<span></span>
-								<p>удалить пользователя</p>
-								<span></span>
-								<p>удалить фото</p>
-							</div>
-							{/* !//!Modal//////////////////////////////////////////////////////////////////! */}
-							<ModalTs open={isModal} onCancel={closeModal}>
-								<div>
-									<SliderFoto />
-									<IconHeartFilled color="white" />
+					{isLoading ? (
+						<>
+							<h1>loading...............</h1>
+						</>
+					) : (
+						<>
+							{data?.map((item) => (
+								<div className={scss.section} key={item.id}>
+									<img
+										onClick={openModal}
+										src={item.img}
+										alt=""
+										className={scss.image}
+									/>
+									<button onClick={() => ShowMessageAgain(item.id)}>
+										<IconDots />
+									</button>
+									<div
+										className={
+											showMessage[item.id]
+												? scss.showMessage
+												: scss.isNotMessage
+										}
+										onClick={() => ShowMessageAgain(item.id)}
+									>
+										<h4>заблокировать пользователя</h4>
+										<span></span>
+										<p>удалить пользователя</p>
+										<span></span>
+										<p>удалить фото</p>
+									</div>
+
+									<ModalTs open={isModal} onCancel={closeModal}>
+										<div className={scss.slider}>
+											<SliderFoto />
+											<IconHeartFilled color="white" />
+								
+										</div>
+									</ModalTs>
 								</div>
-							</ModalTs>
-						</div>
-					))}
+							))}
+						</>
+					)}
 				</>
 			)}
 

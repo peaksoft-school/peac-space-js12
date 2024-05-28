@@ -24,4 +24,11 @@ export namespace USERPUBLIC {
 	}[];
 
 	type GetPublicVideoRequest = void;
+
+	type GetUserPhotoResponse = {
+		id: number;
+		img: string
+	}[];
+
+	type GetUserPhotoRequest = void
 }

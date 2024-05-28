@@ -14,6 +14,7 @@ import Header from './header/Header';
 import Footer from './footer/Footer';
 import PublicPage from '../pages/publicPage/PublicPage';
 import NewPublic from '../pages/publicPage/NewPublic';
+import UserPublic from '../pages/userPublic/UserPublic';
 
 const LayoutSide = () => {
 	const location = useLocation();
@@ -42,6 +43,7 @@ const LayoutSide = () => {
 						<Route path="confindent" element={<ConfidentTwoPage />} />
 						<Route path="/public" element={<PublicPage />} />
 						<Route path="/public/new-public" element={<NewPublic />} />
+						<Route path="/userPublic/*" element={<UserPublic />} />
 					</Routes>
 				</main>
 			</div>

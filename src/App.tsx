@@ -31,7 +31,7 @@ const App = () => {
 						<Route path="/call" element={<Call />} />
 						<Route path="/calltime" element={<CallTime />} />
 						<Route path="/videocall" element={<VideoCall />} />
-						<Route path='/videoend' element={<VideoEnd/>}/>
+						<Route path="/videoend" element={<VideoEnd />} />
 					</Routes>
 				</>
 			)}
